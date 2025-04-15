@@ -6,4 +6,6 @@ The implementations on the scratch folder are mine: they are correct, but probab
 
 The implementations on the SkLearn folder are calls to the API of the library, they are only there in order to learn how to use the library.
 
-In the comparisons folder, there are jupyter notebooks which call both mine and sklearn's implementations, and compare them to see how far i am from the library's solution.   
+In the comparisons folder, there are jupyter notebooks which call both mine and sklearn's implementations, and compare them to see how far i am from the library's solution.  
+
+In the datasets folder you will find all the datasets used in this projects, credits to their respective authors.
