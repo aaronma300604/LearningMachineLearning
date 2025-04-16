@@ -30,3 +30,9 @@ class NaiveBayesClassifier:
                     pred += np.log(self.probabilities[c][a][example[a]]) #Conditional probability of tha atribute value for that class
                 preds[c] = float(pred)
             return preds,max(preds,key=lambda x: preds[x])
+
+    def predict_all(self, examples:pd.DataFrame):
+        preds = np.zeros((len(examples),),dtype=object)
+        for i in range(len(examples)):
+            preds[i] = self.predict(examples.iloc[i])[1]
+        return preds
