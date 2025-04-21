@@ -51,3 +51,42 @@ class CategoricalEncoder:
         for col in self.atrb_names:
             res[col] = res[col].map({v:k for k,v in self.encodings[col].items()})
         return res
+
+class MinMaxNormalizer:
+    def __init__(self):
+        self.maxima = []
+        self.minima = []
+        self.array = None
+        self.atrbs = None
+        self.df = None
+    
+    def fit(self,array):
+        self.maxima.append(max(array))
+        self.minima.append(min(array))
+        self.array = array
+    
+    def transform(self):
+        delta = self.maxima[0]- self.minima[0]
+        return (self.array - self.minima[0])/delta
+
+    def fit_transform(self,array):
+        self.fit(array)
+        return self.transform()
+
+    def fit_df(self,df,atrbs):
+        self.maxima = [max(df[column]) for column in df.columns]
+        self.minima = [min(df[column]) for column in df.columns]
+        self.df = df
+        self.atrbs = atrbs
+
+    def transform_df(self):
+        res = self.df.copy()
+        for i,col in enumerate(self.df.columns):
+            if col in self.atrbs:
+                delta = self.maxima[i]- self.minima[i]
+                res[col] = (self.df[col]-self.minima[i])/delta
+        return res
+        
+    def fit_transform_df(self,df,atrbs):
+        self.fit_df(df,atrbs)
+        return self.transform_df()
