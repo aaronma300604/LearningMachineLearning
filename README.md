@@ -8,3 +8,5 @@ The implementations on the scratch folder are mine: they are correct, but probab
 In the comparisons folder, there are jupyter notebooks which call both mine and sklearn's implementations, and compare them to see how far i am from the library's solution.  
 
 In the datasets folder you will find all the datasets used in this projects, credits to their respective authors.
+
+In this project, generative artificial intelligence was used only to help with debugging, research purposes and optimizing the code when needed. AI did in no case generate the algorithm's code nor the calls to the libraries APIs. 
